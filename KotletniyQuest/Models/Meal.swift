@@ -12,10 +12,6 @@ struct Meal {
     let price: Int
     let pictureURL: String
     let description: String
-    
-    static func getMenu() -> [Meal] {
-        DataStore.shared.menu
-    }
 }
 
 enum mealTime: String {
