@@ -13,6 +13,8 @@
 		F75209682B41232600D24DDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75209662B41232600D24DDB /* Main.storyboard */; };
 		F752096A2B41232700D24DDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75209692B41232700D24DDB /* Assets.xcassets */; };
 		F752096D2B41232700D24DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F752096B2B41232700D24DDB /* LaunchScreen.storyboard */; };
+		F75209782B41275D00D24DDB /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75209772B41275D00D24DDB /* Meal.swift */; };
+		F752097B2B412ABF00D24DDB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F752097A2B412ABF00D24DDB /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F75209692B41232700D24DDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F752096C2B41232700D24DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F752096E2B41232700D24DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F75209772B41275D00D24DDB /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		F752097A2B412ABF00D24DDB /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,57 @@
 		F752095F2B41232600D24DDB /* KotletniyQuest */ = {
 			isa = PBXGroup;
 			children = (
-				F75209602B41232600D24DDB /* AppDelegate.swift */,
-				F75209622B41232600D24DDB /* SceneDelegate.swift */,
-				F75209642B41232600D24DDB /* ViewController.swift */,
-				F75209662B41232600D24DDB /* Main.storyboard */,
+				F75209742B41264200D24DDB /* App */,
+				F75209752B41264D00D24DDB /* ViewControllers */,
+				F75209762B41265A00D24DDB /* Storyboards */,
+				F75209792B41276400D24DDB /* Models */,
+				F752097C2B412B1000D24DDB /* Store */,
 				F75209692B41232700D24DDB /* Assets.xcassets */,
-				F752096B2B41232700D24DDB /* LaunchScreen.storyboard */,
-				F752096E2B41232700D24DDB /* Info.plist */,
 			);
 			path = KotletniyQuest;
+			sourceTree = "<group>";
+		};
+		F75209742B41264200D24DDB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F75209602B41232600D24DDB /* AppDelegate.swift */,
+				F75209622B41232600D24DDB /* SceneDelegate.swift */,
+				F752096E2B41232700D24DDB /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F75209752B41264D00D24DDB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F75209642B41232600D24DDB /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F75209762B41265A00D24DDB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F75209662B41232600D24DDB /* Main.storyboard */,
+				F752096B2B41232700D24DDB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F75209792B41276400D24DDB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F75209772B41275D00D24DDB /* Meal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F752097C2B412B1000D24DDB /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				F752097A2B412ABF00D24DDB /* DataStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F75209782B41275D00D24DDB /* Meal.swift in Sources */,
 				F75209652B41232600D24DDB /* ViewController.swift in Sources */,
 				F75209612B41232600D24DDB /* AppDelegate.swift in Sources */,
+				F752097B2B412ABF00D24DDB /* DataStore.swift in Sources */,
 				F75209632B41232600D24DDB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +342,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5HNRLGK7M5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KotletniyQuest/Info.plist;
+				INFOPLIST_FILE = KotletniyQuest/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -307,9 +355,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AbloginEgor.KotletniyQuest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -322,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5HNRLGK7M5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KotletniyQuest/Info.plist;
+				INFOPLIST_FILE = KotletniyQuest/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -335,9 +386,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AbloginEgor.KotletniyQuest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
