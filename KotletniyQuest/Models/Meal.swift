@@ -14,12 +14,28 @@ struct Meal {
     let description: String
 }
 
-enum mealTime: String {
-    case breakfast = "Завтрак"
-    case lunch = "Обед"
-    case dinner = "Ужин"
-    case snacks = "Перекусы"
-    case desserts = "Десерты"
+enum mealTime: Int {
+    case breakfast
+    case lunch
+    case dinner
+    case snacks
+    case desserts
+    
+    var description: String {
+            switch self {
+            case .breakfast:
+                return "Завтрак"
+            case .lunch:
+                return "Обед"
+            case .dinner:
+                return "Ужин"
+            case .snacks:
+                return "Перекусы"
+            case .desserts:
+                return "Десерты"
+            }
+        }
+    
 }
 
 struct ShoppingCart {
