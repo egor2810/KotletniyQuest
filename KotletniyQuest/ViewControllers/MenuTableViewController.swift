@@ -8,8 +8,7 @@
 import UIKit
 
 final class MenuTableViewController: UITableViewController {
-    
-    private let menu = DataStore.shared.menu
+
     private var groupedMenu: [MealTime: [Meal]] = [:]
     
     override func viewDidLoad() {
@@ -18,6 +17,8 @@ final class MenuTableViewController: UITableViewController {
     }
     
     private func groupMenuBySection() {
+        let menu = DataStore.shared.menu
+        
         for section in MealTime.allCases {
             groupedMenu[section] = menu.filter { $0.section == section }
         }
