@@ -48,31 +48,12 @@ final class MenuTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "header", for: indexPath)
-        
-        let mealCell = cell as! CellForMeal
-        
-        let sectionMeal = menu.filter{
-            $0.section.rawValue == indexPath.section
-        }[indexPath.row]
-        
-        mealCell.mealImage.image = UIImage(named: sectionMeal.pictureURL)
-        mealCell.mealImage.layer.cornerRadius = 20
-        mealCell.mealNameLabel.text = sectionMeal.name
-        mealCell.mealPriceLabel.text = "\(sectionMeal.price) RUB"
-
-        return mealCell
-        
-        
-        menu.first(where: {$0.section.rawValue == section})?.section.description
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         MealTime.allCases[section].description
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-    }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
