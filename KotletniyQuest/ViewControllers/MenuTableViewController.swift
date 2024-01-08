@@ -8,40 +8,44 @@
 import UIKit
 
 final class MenuTableViewController: UITableViewController {
-    
-    private let menu = DataStore.shared.menu
-    
 
+    private var groupedMenu: [MealTime: [Meal]] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupMenuBySection()
     }
-
+    
+    private func groupMenuBySection() {
+        let menu = DataStore.shared.menu
+        
+        for section in MealTime.allCases {
+            groupedMenu[section] = menu.filter { $0.section == section }
+        }
+    }
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        Set(menu.map{$0.section}).count
+        groupedMenu.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        menu.filter{$0.section.rawValue == section}.count
+        let sectionType = MealTime.allCases[section]
+        return groupedMenu[sectionType]?.count ?? 0
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "meal", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "meal", for: indexPath) as! CellForMeal
         
-        let mealCell = cell as! CellForMeal
+        let sectionType = MealTime.allCases[indexPath.section]
+        if let meal = groupedMenu[sectionType]?[indexPath.row] {
+            cell.mealImage.image = UIImage(named: meal.pictureURL)
+            cell.mealNameLabel.text = meal.name
+            cell.mealPriceLabel.text = meal.price.formatted()
+        }
         
-        let sectionMeal = menu.filter{
-            $0.section.rawValue == indexPath.section
-        }[indexPath.row]
-        
-        mealCell.mealImage.image = UIImage(named: sectionMeal.pictureURL)
-        mealCell.mealImage.layer.cornerRadius = 20
-        mealCell.mealNameLabel.text = sectionMeal.name
-        mealCell.mealPriceLabel.text = "\(sectionMeal.price) RUB"
-
-        return mealCell
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -62,6 +66,8 @@ final class MenuTableViewController: UITableViewController {
         
         
         menu.first(where: {$0.section.rawValue == section})?.section.description
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        MealTime.allCases[section].description
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
